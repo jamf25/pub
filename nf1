@@ -1,0 +1,1 @@
+moquery -c fvCEp -x rsp-subtree=children -o json | jq -r '.imdata[] | select(.fvCEp.children != null) | .fvCEp | {mac: .attributes.mac, epg_dn: .attributes.dn, ips: ([.children[] | select(.fvIp) | .fvIp.attributes.addr] | unique | .[])}'
